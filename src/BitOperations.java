@@ -25,8 +25,6 @@ public class BitOperations {
 		long res = -1;
 		if (testNBit(nBit)) {
 			long mask = 1 << nBit; 
-			System.out.println(mask);
-			System.out.println(number & mask);
 			if ((number & mask) != 0) {
 				res = 1;
 			} else {
