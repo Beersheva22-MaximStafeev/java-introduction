@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class PrimitivesTest {
 
 	@Test 
-	@Disabled
+	
 	void dataTypeTest() {
 //		fail("Not yet implemented");
 		int b = 10;
@@ -76,5 +76,48 @@ class PrimitivesTest {
 		return (number / this.powOf10(digitNo)) % 10;
 	}
 	
+	@Test
+	void getBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101 
+		assertEquals(1, BitOperations.getBitValue(number, 5));
+		assertEquals(0, BitOperations.getBitValue(number, 11));
+		assertEquals(0, BitOperations.getBitValue(number, 1));
+		assertEquals(1, BitOperations.getBitValue(number, 2));
+	}
+
+	@Test
+	void setBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101 
+		assertEquals(0x3ab7e5, BitOperations.setBitValue(number, 5, false));
+		assertEquals(0x3ab7f5, BitOperations.setBitValue(number, 5, true));
+	}
 	
+	@Test
+	void setBitValueTestChecked() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101 
+		assertEquals(0x3ab7d5, BitOperations.setBitValue(number, 5, false));
+		assertEquals(0x3ab7f5, BitOperations.setBitValue(number, 5, true));
+	}
+	
+	@Test
+	void revertBitValueTest() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101 
+		assertEquals(0x3ab7e5, BitOperations.revertBitValue(number, 5));
+		assertEquals(0x3ab7f5, BitOperations.revertBitValue(0x3ab7e5, 5));
+	}
+
+	@Test
+	void revertBitValueTestChecked() {
+		long number = 0x3ab7f5; // 0011 1010 1011 0111 1111 0101 
+		assertEquals(0x3ab7d5, BitOperations.revertBitValue(number, 5));
+		assertEquals(0x3ab7f5, BitOperations.revertBitValue(0x3ab7d5, 5));
+	}
+	
+	@Test
+	void newTest() {
+		long number = -1;
+		assertEquals(1, BitOperations.getBitValue(number, 63));
+		number = BitOperations.revertBitValue(number, 63);
+		assertEquals(0, BitOperations.getBitValue(number, 63));
+	}
 }
