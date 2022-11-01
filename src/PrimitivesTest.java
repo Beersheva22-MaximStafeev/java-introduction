@@ -114,7 +114,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
-	void newTest() {
+	void additionalTestNegativeNumbers() {
 		long number = -1;
 		assertEquals(1, BitOperations.getBitValue(number, 63));
 		number = BitOperations.revertBitValue(number, 63);
