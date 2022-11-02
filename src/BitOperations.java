@@ -24,7 +24,7 @@ public class BitOperations {
 	static public int getBitValue(long number, int nBit) {
 		long res = -1;
 		if (testNBit(nBit)) {
-			long mask = 1 << nBit; 
+			long mask = 1L << nBit; 
 			if ((number & mask) != 0) {
 				res = 1;
 			} else {
@@ -44,19 +44,11 @@ public class BitOperations {
 	static public long setBitValue(long number, int nBit, boolean value) {
 		long res = -1;
 		if (testNBit(nBit)) {
-			long mask = 1 << nBit;
-			if (getBitValue(number, nBit) > 0) {
-				if (value) {
-					res = number;
-				} else {
-					res = number & (~mask);
-				}
+			long mask = 1L << nBit;
+			if (value) {
+				res = number | mask;
 			} else {
-				if (value) {
-					res = number | mask;
-				} else {
-					res = number;
-				}
+				res = number & (~mask);
 			}
 		}
 		return res;
@@ -75,16 +67,6 @@ public class BitOperations {
 			res = setBitValue(number, nBit, newValue);
 		}
 		return res;
-	}
-	
-	static public long pow2(int pow) {
-//		long res = 1;
-//		while (pow > 0) {
-//			res = res * 2;
-//			pow--;
-//		}
-//		return res;
-		return 1 << pow;
 	}
 	
 }
