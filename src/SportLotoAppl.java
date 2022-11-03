@@ -30,29 +30,27 @@ public class SportLotoAppl {
 		
 		i1 = getRandomInt(1,49);
 		do {
-			if (i2 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i2");
+			if (i2 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i2: " + i2);
 			i2 = getRandomInt(1,49); 
 		} while (i2 == i1);
 		do {
-			if (i3 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i3");
+			if (i3 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i3: " + i3);
 			i3 = getRandomInt(1,49);
 		} while (i3 == i1 || i3 == i2);
 		do {
-			if (i4 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i4");
+			if (i4 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i4: " + i4);
 			i4 = getRandomInt(1,49); 
 		} while (i4 == i1 || i4 == i2 || i4 == i3);
 		do {
-			if (i5 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i5");
+			if (i5 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i5: " + i5);
 			i5 = getRandomInt(1,49); 
 		} while (i5 == i1 || i5 == i2 || i5 == i3 || i5 == i4);
 		do {
-			if (i6 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i6");
+			if (i6 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i6: " + i6);
 			i6 = getRandomInt(1,49); 
 		} while (i6 == i1 || i6 == i2 || i6 == i3 || i6 == i4 || i6 == i5);
 		
-		for (int i = 0; i < 6; i++) {
-			System.out.print(getRandomInt(1, 49) + " ");
-		}
+		System.out.print("" + i1 + " " + i2 + " " + i3 + " " + i4 + " " + i5 + " " + i6);
 	}
 
 }
