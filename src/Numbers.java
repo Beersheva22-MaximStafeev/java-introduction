@@ -22,11 +22,12 @@ public class Numbers {
 	/**
 	 * 
 	 * @param number - any number
+	 * @param digitsCount - count of digits to sum from most right
 	 * @return - sum of last 3 digits
 	 */
-	static public int getSum3(int number) {
+	static public int getSumOfLastDigits(int number, int digitsCount) {
 		int res = 0;
-		for (int i = 1; i <= 3; i++) {
+		for (int i = 1; i <= digitsCount; i++) {
 			res += number % 10;
 			number = number / 10;
 		}
@@ -42,7 +43,7 @@ public class Numbers {
 	static public boolean isHappyNumber(int number) {
 		boolean res = false; 
 		if (number >= 100000 && number <= 999999) {
-			res = getSum3(number) == getSum3(number / 1000);
+			res = getSumOfLastDigits(number, 3) == getSumOfLastDigits(number / 1000, 3);
 		}
 		return res;
 	}

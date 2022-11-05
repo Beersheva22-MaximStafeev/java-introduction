@@ -124,18 +124,26 @@ class PrimitivesTest {
 	}
 	
 	@Test
-	void getSum3Test() {
-		assertEquals(3  , Numbers.getSum3(30));
-		assertEquals(3  , Numbers.getSum3(1030));
-		assertEquals(6  , Numbers.getSum3(123));
-		assertEquals(18 , Numbers.getSum3(567));
-		assertEquals(18 , Numbers.getSum3(99));
-		assertEquals(27 , Numbers.getSum3(9999999));
-		assertEquals(14 , Numbers.getSum3(707));
-		assertEquals(14 , Numbers.getSum3(7707));
+	void getSumOfLastDigitsTest() {
+		assertEquals(3  , Numbers.getSumOfLastDigits(30, 3));
+		assertEquals(3  , Numbers.getSumOfLastDigits(1030, 3));
+		assertEquals(4  , Numbers.getSumOfLastDigits(1030, 4));
+		assertEquals(6  , Numbers.getSumOfLastDigits(123, 3));
+		assertEquals(6  , Numbers.getSumOfLastDigits(123, 4));
+		assertEquals(6  , Numbers.getSumOfLastDigits(123, 5));
+		assertEquals(18 , Numbers.getSumOfLastDigits(567, 3));
+		assertEquals(9 , Numbers.getSumOfLastDigits(99, 1));
+		assertEquals(18 , Numbers.getSumOfLastDigits(99, 2));
+		assertEquals(18 , Numbers.getSumOfLastDigits(99, 3));
+		for (int i = 0; i < 10; i++) {
+			assertEquals(9*i , Numbers.getSumOfLastDigits(999999999, i));
+		}
+		assertEquals(27 , Numbers.getSumOfLastDigits(9999999, 3));
+		assertEquals(14 , Numbers.getSumOfLastDigits(707, 3));
+		assertEquals(14 , Numbers.getSumOfLastDigits(7707, 3));
 		for (int i = 0; i < 1000; i++) {
 			int s = (i / 100) + (i / 10) % 10 + (i % 10);
-			assertEquals(s, Numbers.getSum3(i));
+			assertEquals(s, Numbers.getSumOfLastDigits(i, 3));
 		}
 	}
 	
