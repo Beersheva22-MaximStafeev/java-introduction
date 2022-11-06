@@ -20,13 +20,13 @@ public class SportLotoAppl {
 	 * numbers can not be repeated in a sequence of 6 random numbers
 	 */
 	public static void main(String[] args) {
-		int i1, i2, i3, i4, i5, i6;
-		i1 = -1;
-		i2 = -1;
-		i3 = -1;
-		i4 = -1;
-		i5 = -1;
-		i6 = -1;
+//		int i1, i2, i3, i4, i5, i6;
+//		i1 = -1;
+//		i2 = -1;
+//		i3 = -1;
+//		i4 = -1;
+//		i5 = -1;
+//		i6 = -1;
 		
 //		i1 = getRandomInt(1,49);
 //		do {
@@ -67,17 +67,16 @@ public class SportLotoAppl {
 //		System.out.print("" + i1 + " " + i2 + " " + i3 + " " + i4 + " " + i5 + " " + i6);
 		long array = 0;
 		int rnd;
-		if (DEBUG_OUTPUT) System.out.println("Begin");
+		if (DEBUG_OUTPUT) System.out.println("Start");
 		for (int i = 0; i < 6; i++) {
 			do {
 				rnd = getRandomInt(1, 49);
-				if ((BitOperations.getBitValue(array, rnd) == 1) && DEBUG_OUTPUT) System.out.print("dup(" + rnd + ") ");  
-			} while (BitOperations.getBitValue(array, rnd) != 0);
+				if (DEBUG_OUTPUT) if (BitOperations.getBitValue(array, rnd) == 1) System.out.print("dup(" + rnd + ") ");  
+			} while (BitOperations.getBitValue(array, rnd) == 0);
 			array = BitOperations.setBitValue(array, rnd, true);
 			System.out.print("" + rnd + " ");
 		}
-		if (DEBUG_OUTPUT) System.out.println("");
-		if (DEBUG_OUTPUT) System.out.println("End");
+		if (DEBUG_OUTPUT) { System.out.println(""); System.out.println("Stop"); }
 	}
 
 }
