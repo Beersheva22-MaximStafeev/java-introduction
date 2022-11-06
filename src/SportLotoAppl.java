@@ -72,7 +72,7 @@ public class SportLotoAppl {
 			do {
 				rnd = getRandomInt(1, 49);
 				if (DEBUG_OUTPUT) if (BitOperations.getBitValue(array, rnd) == 1) System.out.print("dup(" + rnd + ") ");  
-			} while (BitOperations.getBitValue(array, rnd) == 0);
+			} while (BitOperations.getBitValue(array, rnd) != 0);
 			array = BitOperations.setBitValue(array, rnd, true);
 			System.out.print("" + rnd + " ");
 		}
