@@ -49,22 +49,35 @@ public class SportLotoAppl {
 //			if (i6 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate i6: " + i6);
 //			i6 = getRandomInt(1,49); 
 //		} while (i6 == i1 || i6 == i2 || i6 == i3 || i6 == i4 || i6 == i5);
-		do {
-			if (i1 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate");
-			i1 = getRandomInt(1,49);
-			i2 = getRandomInt(1,49);
-			i3 = getRandomInt(1,49);
-			i4 = getRandomInt(1,49);
-			i5 = getRandomInt(1,49);
-			i6 = getRandomInt(1,49);
-		} while (i1 == i2 || i1 == i3 || i1 == i4 || i1 == i5 || i1 == i6 || 
-				i2 == i3 || i2 == i4 || i2 == i5 || i2 == i6 ||
-				i3 == i4 || i3 == i5 || i3 == i6 ||
-				i4 == i5 || i4 == i6 ||
-				i5 == i6);
-		
-		
-		System.out.print("" + i1 + " " + i2 + " " + i3 + " " + i4 + " " + i5 + " " + i6);
+//		do {
+//			if (i1 != -1 && DEBUG_OUTPUT) System.out.println("Duplicate");
+//			i1 = getRandomInt(1,49);
+//			i2 = getRandomInt(1,49);
+//			i3 = getRandomInt(1,49);
+//			i4 = getRandomInt(1,49);
+//			i5 = getRandomInt(1,49);
+//			i6 = getRandomInt(1,49);
+//		} while (i1 == i2 || i1 == i3 || i1 == i4 || i1 == i5 || i1 == i6 || 
+//				i2 == i3 || i2 == i4 || i2 == i5 || i2 == i6 ||
+//				i3 == i4 || i3 == i5 || i3 == i6 ||
+//				i4 == i5 || i4 == i6 ||
+//				i5 == i6);
+//		
+//		
+//		System.out.print("" + i1 + " " + i2 + " " + i3 + " " + i4 + " " + i5 + " " + i6);
+		long array = 0;
+		int rnd;
+		if (DEBUG_OUTPUT) System.out.println("Begin");
+		for (int i = 0; i < 6; i++) {
+			do {
+				rnd = getRandomInt(1, 49);
+				if ((BitOperations.getBitValue(array, rnd) == 1) && DEBUG_OUTPUT) System.out.print("dup(" + rnd + ") ");  
+			} while (BitOperations.getBitValue(array, rnd) != 0);
+			array = BitOperations.setBitValue(array, rnd, true);
+			System.out.print("" + rnd + " ");
+		}
+		if (DEBUG_OUTPUT) System.out.println("");
+		if (DEBUG_OUTPUT) System.out.println("End");
 	}
 
 }

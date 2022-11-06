@@ -10,13 +10,13 @@ class PrimitivesTest {
 	void dataTypeTest() {
 //		fail("Not yet implemented");
 		int b = 10;
-		short a = 20;
-		char c = 'd';
+//		short a = 20;
+//		char c = 'd';
 		long l = (long) 10.1;
-		byte b1 = (byte) 1000;
-		float f = 10.2f;
-		double dd = 0.3;
-		boolean bb = false;
+//		byte b1 = (byte) 1000;
+//		float f = 10.2f;
+//		double dd = 0.3;
+//		boolean bb = false;
 		
 		int b2 = 0xffffffff; // = -1
 		
