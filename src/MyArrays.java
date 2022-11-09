@@ -8,7 +8,6 @@ public class MyArrays {
 	 * @return new array with added at end a given number
 	 */
 	public static int[] addsNumber(int[] array, int number) {
-		//TODO
 		// use standard class Arrays, method copyOf
 		int[] newArray = Arrays.copyOf(array, array.length + 1);
 		newArray[array.length] = number;
@@ -23,7 +22,6 @@ public class MyArrays {
 	 * if index doesn't exist in a given array, in returns the same array
 	 */
 	public static int[] removeNumber(int[] array, int index) {
-		//TODO
 		// use standard class System, method arrayCopy
 		int[] newArray;
 		if ((index < 0) || (index >= array.length)) {
@@ -43,7 +41,6 @@ public class MyArrays {
 	 * @return new array with inserted number, array should remain sorted
 	 */
 	public static int[] insertSorted(int[] arraySorted, int number) {
-		//TODO
 		// use the method binarySearch of standard class Arrays
 		// use the method arrayCopy of the standard class System
 		int[] newArray = new int[arraySorted.length + 1];
