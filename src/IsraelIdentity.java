@@ -1,5 +1,9 @@
 
 public class IsraelIdentity {
+	/**
+	 * number of digits in TZ should by odd
+	 * otherwise algorithm in generateRandomId should be changed a little to count 1-st digit, not the last one  
+	 */
 	private static final int NUMBER_OF_DIGITS_IN_TZ = 9;
 
 	/**
@@ -23,17 +27,6 @@ public class IsraelIdentity {
 		return res;
 	}
 	
-	
-	/**
-	 * 
-	 * @return nuber of digits in TZ
-	 * should by odd
-	 * otherwise algorithm in generateRandomId should be changed a little to count 1-st digit, not the last one  
-	 */
-	public static int getNumDigitsInId() {
-		return NUMBER_OF_DIGITS_IN_TZ;
-	}
-	
 	/**
 	 * 
 	 * @param id
@@ -46,7 +39,7 @@ public class IsraelIdentity {
 	 */
 	public static boolean verify(int id) {
 		boolean res = false; 
-		if (Numbers.getNDigits(id) == getNumDigitsInId()) {
+		if (Numbers.getNDigits(id) == NUMBER_OF_DIGITS_IN_TZ) {
 			res = countCheckSum(id) % 10 == 0;
 		}
 		return res;
@@ -58,8 +51,8 @@ public class IsraelIdentity {
 	 * cycle not more than 9 iterations
 	 */
 	public static int generateRandomId() {
-		int min = (int)Math.pow(10, getNumDigitsInId() - 2);
-		int max = (int)Math.pow(10, getNumDigitsInId() - 1) - 1;
+		int min = (int)Math.pow(10, NUMBER_OF_DIGITS_IN_TZ - 2);
+		int max = (int)Math.pow(10, NUMBER_OF_DIGITS_IN_TZ - 1) - 1;
 		int rnd = SportLotoAppl.getRandomInt(min, max);
 		int checkSum = countCheckSum(rnd * 10);
 		return rnd * 10 + (10 - checkSum % 10) % 10;

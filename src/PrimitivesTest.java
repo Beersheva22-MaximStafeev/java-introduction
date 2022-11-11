@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -234,12 +236,14 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void getDigitsTest() {
 		int[] expected = {1,2,3,4};
 		assertArrayEquals(expected, Numbers.getDigits(1234));
 	}
 
 	@Test
+	@Disabled
 	void getNumberFromDigitsTest() {
 		int[] arr = {1,2,3,4};
 		int expectedNumber = 1234;
@@ -248,11 +252,13 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void countCheckSumTest() {
 		assertEquals(40, IsraelIdentity.countCheckSum(123456782));
 	}
 	
 	@Test
+	@Disabled
 	void generateRandomIdTest() {
 		for (int i = 0; i < 100; i++) {
 			int newId = IsraelIdentity.generateRandomId();
@@ -264,12 +270,14 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void addsNumberTest() {
 		assertArrayEquals(new int[] {1,2,3,4}, MyArrays.addsNumber(new int[] {1,2,3}, 4));
 		assertArrayEquals(new int[] {1,2,3,-4}, MyArrays.addsNumber(new int[] {1,2,3}, -4));
 	}
 	
 	@Test
+	@Disabled
 	void removeNumberTest() {
 		assertArrayEquals(new int[] {1,2,3}, MyArrays.removeNumber(new int[] {1,2,3}, -1));
 		assertArrayEquals(new int[] {2,3}, MyArrays.removeNumber(new int[] {1,2,3}, 0));
@@ -280,6 +288,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void insertSortedTest() {
 		assertArrayEquals(new int[] {-101,2,4,6}, MyArrays.insertSorted(new int[] {2,4,6}, -101));
 		assertArrayEquals(new int[] {1,2,4,6}, MyArrays.insertSorted(new int[] {2,4,6}, 1));
@@ -296,4 +305,111 @@ class PrimitivesTest {
 		assertArrayEquals(new int[] {1,2}, MyArrays.insertSorted(new int[] {1}, 2));
 		assertArrayEquals(new int[] {1,1}, MyArrays.insertSorted(new int[] {1}, 1));
 	}
+	
+	@Test
+	void binarySearchTest() {
+		assertEquals(1, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 2));
+		assertEquals(1, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 2));
+		assertEquals(1, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 2));
+		assertEquals(1, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 2));
+		assertEquals(1, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 2));
+		assertEquals(0, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3}, 1));
+		assertEquals(21, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4}, 4));
+		assertEquals(-23, MyArrays.binarySearch(new int[] {1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,4}, 5));
+		assertEquals(0, MyArrays.binarySearch(new int[] {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}, 2));
+		assertEquals(-1, MyArrays.binarySearch(new int[] {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}, 1));
+		assertEquals(-21, MyArrays.binarySearch(new int[] {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2}, 3));
+		for (int i = 1; i < 8; i++) {
+			assertEquals(Arrays.binarySearch(new int[] {2,4,6}, i), MyArrays.binarySearch(new int[] {2,4,6}, i));
+		}
+	}
+	
+	@Test
+	void bubbleSortTest() {
+		int test[][][] = {
+				{{ 1, 2, 3, 10, -1, 5, 6 },{-1, 1, 2, 3,  5, 6 , 10}},
+				{{ 1, 2, 3, 4, 5, 10 },{ 1, 2, 3, 4, 5, 10 }},
+				{{ 5, 1, 2, 4, 6, 10 },{  1, 2, 4,5, 6, 10 }},
+				{{ 1, 5, 2, 4, 3, 10 },{ 1,  2,  3,4, 5,10 }},
+				{{ 1, 3, 2, 5, 4, 10, 8 },{ 1, 2,3, 4,  5, 8, 10 }},
+				{{1, 3, 20, 4, 5, 6, 10},{1, 3, 4, 5, 6, 10, 20}},
+				{{1, 3, 20, 4, 5, 11, 2},{1, 2, 3, 4, 5, 11, 20}},
+				{{ 10, 2, 3, 4, 1 },{  1 ,2, 3, 4, 10}},
+				{{ 1, 2, 4, 3, 5, 10 },{ 1, 2,  3,4, 5, 10 }},
+				{{ 1, 2, 3, 10, 5, 4 },{ 1, 2, 3, 4, 5, 10 }},
+				{{ 1, 5, 3, 4, 2, 10 },{ 1, 2, 3, 4, 5, 10 }},
+				{ { 1, 2, 3, 4, 10, 5 }, { 1, 2, 3, 4, 5, 10 }},
+				{{ 2, 1, -3, 4, 5, 10 },{ -3, 1, 2, 4, 5, 10 }},
+				{{ 3, 2, 1, 4, 5, 6 },{ 1, 2, 3, 4, 5, 6 }}				
+		};
+		for (int i = 0; i < test.length; i++) {
+			MyArrays.bubbleSort(test[i][0]);
+			assertArrayEquals(test[i][1], test[i][0]);
+		}
+
+	}
+	
+	@Test
+	void bubbleSortTest2() {
+		int test[][] = {
+				{ 1, 2, 3, 10, -1, 5, 6 },
+				{ 1, 2, 3, 4, 5, 10 },
+				{ 5, 1, 2, 4, 6, 10 },
+				{ 1, 5, 2, 4, 3, 10 },
+				{ 1, 3, 2, 5, 4, 10, 8 },
+				{1, 3, 20, 4, 5, 6, 10},
+				{1, 3, 20, 4, 5, 11, 2},
+				{ 10, 2, 3, 4, 1 },
+				{ 1, 2, 4, 3, 5, 10 },
+				{ 1, 2, 3, 10, 5, 4 },
+				{ 1, 5, 3, 4, 2, 10 },
+				{ 1, 2, 3, 4, 10, 5 },
+				{ 2, 1, -3, 4, 5, 10 },
+				{ 3, 2, 1, 4, 5, 6 }				
+		};
+		for (int i = 0; i < test.length; i++) {
+			int[] testArr = Arrays.copyOf(test[i], test[i].length);
+			MyArrays.bubbleSort(test[i]);
+			Arrays.sort(testArr);
+			assertArrayEquals(testArr, test[i]);
+		}
+
+	}
+	
+	@Test
+	void isOneSwapTestFalse() {
+		int[][] ar = {
+			{ 1, 2, 3, 10, -1, 5, 6 },
+			{ 1, 2, 3, 4, 5, 10 },
+			{ 5, 1, 2, 4, 6, 10 },
+			{ 1, 5, 2, 4, 3, 10 },
+			{ 1, 3, 2, 5, 4, 10, 8 },
+			{ 1, 3, 20, 4, 5, 6, 10 },
+			{ 1, 3, 20, 4, 5, 11, 2 },
+			{1},
+			{1,2},
+		};
+		for (int i = 0; i < ar.length; i++) {
+			assertFalse(MyArrays.isOneSwapForSorted(ar[i]));
+		}
+	}
+
+	@Test
+	void isOneSwapTestTrue() {
+		int[][] ar = {
+			{ 10, 2, 3, 4, 1 },
+			{ 1, 2, 4, 3, 5, 10 },
+			{ 1, 2, 3, 10, 5, 4 },
+			{ 1, 5, 3, 4, 2, 10 },
+			{ 1, 2, 3, 4, 10, 5 },
+			{ 2, 1, -3, 4, 5, 10 },
+			{ 3, 2, 1, 4, 5, 6 },
+			{2,1}
+		};
+		for (int i = 0; i < ar.length; i++) {
+			assertTrue(MyArrays.isOneSwapForSorted(ar[i]));
+		}
+
+	}
+
 }
