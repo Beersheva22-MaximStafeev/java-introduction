@@ -388,6 +388,7 @@ class PrimitivesTest {
 			{ 1, 3, 20, 4, 5, 11, 2 },
 			{1},
 			{1,2},
+			{1,2,2}
 		};
 		for (int i = 0; i < ar.length; i++) {
 			assertFalse(MyArrays.isOneSwapForSorted(ar[i]));
@@ -404,7 +405,8 @@ class PrimitivesTest {
 			{ 1, 2, 3, 4, 10, 5 },
 			{ 2, 1, -3, 4, 5, 10 },
 			{ 3, 2, 1, 4, 5, 6 },
-			{2,1}
+			{2,1},
+			{1,2,5,4,4,4,4,4,2,5,5,6}
 		};
 		for (int i = 0; i < ar.length; i++) {
 			assertTrue(MyArrays.isOneSwapForSorted(ar[i]));

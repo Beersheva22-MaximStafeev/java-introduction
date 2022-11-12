@@ -109,6 +109,29 @@ public class MyArrays {
 			array[index2] = swap;			
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param array
+	 * @param swapLeft
+	 * @param swapRight
+	 * @param index
+	 * @return return element from array from a given index, 
+	 * 		but with swapped elements in positions swapLeft and swapRight 
+	 */
+	private static int getFromSwappedArray(int[] array, int swapLeft, int swapRight, int index) {
+		int res = 0;
+		if (index == swapLeft) {
+			res = array[swapRight];
+		} else if (index == swapRight) {
+			res = array[swapLeft];
+		} else {
+			res = array[index];
+		}
+		return res;
+	}
+	
 	/**
 	 * 2.	Write method isOneSwapForSorted in the class MyArrays that takes an array 
 	 * and returns true if the array is unsorted but only one swap between two numbers is required 
@@ -131,16 +154,14 @@ public class MyArrays {
 				r--;
 			}
 			if (r > l) {
-				int r_save = r;
-				int l_save = l;
-				swapElementsInArray(array, r_save, l_save);
+				int rSave = r;
+				int lSave = l;
 				if (r + 1 < array.length) r++;
 				if (l > 0) l--;
-				while (l < r && array[l] <= array[l+1]) {
+				while (l < r && (getFromSwappedArray(array,rSave,lSave,l)  <= getFromSwappedArray(array,rSave,lSave,l+1))) {
 					l++;
 				}
 				res = r == l;
-				swapElementsInArray(array, r_save, l_save);
 			}
 		}
 		return res;
