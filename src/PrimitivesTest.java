@@ -433,11 +433,14 @@ class PrimitivesTest {
 		assertTrue(MyArrays.isSum2(new short[] {1,2,3}, 5));
 		assertTrue(MyArrays.isSum2(new short[] {2,2}, 4));
 		assertTrue(MyArrays.isSum2(new short[] {1,2,2,3}, 4));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, 6));
+		assertTrue(MyArrays.isSum2(new short[] { 2, 3, 4, 0x7FFF, 0x7FF0, 22 }, 0xFFEF));
 		
 		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 1));
 		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 2));
 		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 6));
 		assertFalse(MyArrays.isSum2(new short[] {2,2}, 3));
 		assertFalse(MyArrays.isSum2(new short[] {2,2}, 5));
+		assertFalse(MyArrays.isSum2(new short[] { 4, 2, 2, 2, 2, 2 }, 8));
 	}
 }
