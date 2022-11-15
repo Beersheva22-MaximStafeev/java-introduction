@@ -388,11 +388,14 @@ class PrimitivesTest {
 			{ 1, 3, 20, 4, 5, 11, 2 },
 			{1},
 			{1,2},
+			{ 1, 2, 3, 10, 16, 16, 11, 10, 20 },
+			{ 1, 2, 3, 10, 16, 11, 11, 15, 20 },
 			{1,2,2}
 		};
 		for (int i = 0; i < ar.length; i++) {
 			assertFalse(MyArrays.isOneSwapForSorted(ar[i]));
 		}
+		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 11, 11, 15, 20 }));
 	}
 
 	@Test
@@ -406,12 +409,35 @@ class PrimitivesTest {
 			{ 2, 1, -3, 4, 5, 10 },
 			{ 3, 2, 1, 4, 5, 6 },
 			{2,1},
-			{1,2,5,4,4,4,4,4,2,5,5,6}
+			{1,2,5,4,4,4,4,4,2,5,5,6},
+			{2,2,2,2,1},
+			{3,2,2,2,2},
+			{ 3, 3, 6, 3, 3, 6, 6, 3, 6, 6 },
+			{ 5, 4, 4, 4, 4 },
+			{ 5, 5, 5, 5, 4 },
+			{ 1, 2, 3, 10, 16, 11, 11, 10, 20 },
+			{ 1, 2, 3, 10, 16, 11, 11, 11, 20 },
+			{ 1, 2, 3, 10, 16, 11, 11, 16, 20 },
+			{ 1, 2, 3, 10, 16, 16, 15, 16, 20 }
+
 		};
 		for (int i = 0; i < ar.length; i++) {
 			assertTrue(MyArrays.isOneSwapForSorted(ar[i]));
 		}
-
 	}
-
+	
+	@Test
+	void isSum2Test() {
+		assertTrue(MyArrays.isSum2(new short[] {1,2,3}, 3));
+		assertTrue(MyArrays.isSum2(new short[] {1,2,3}, 4));
+		assertTrue(MyArrays.isSum2(new short[] {1,2,3}, 5));
+		assertTrue(MyArrays.isSum2(new short[] {2,2}, 4));
+		assertTrue(MyArrays.isSum2(new short[] {1,2,2,3}, 4));
+		
+		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 1));
+		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 2));
+		assertFalse(MyArrays.isSum2(new short[] {1,2,3}, 6));
+		assertFalse(MyArrays.isSum2(new short[] {2,2}, 3));
+		assertFalse(MyArrays.isSum2(new short[] {2,2}, 5));
+	}
 }

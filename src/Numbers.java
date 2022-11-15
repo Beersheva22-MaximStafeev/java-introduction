@@ -7,6 +7,15 @@ public class Numbers {
 	private static final int NUMBER_OF_DIGITS = 6;
 	/**
 	 * 
+	 * @param min - int
+	 * @param max - int
+	 * @return - return random int [min..max]
+	 */
+	public static long getRandomNumber(long min, long max) {
+		return (long)(min + Math.random() * (1+ max - min));
+	}
+	/**
+	 * 
 	 * @param number - any long number
 	 * @return - count of digits in number
 	 */

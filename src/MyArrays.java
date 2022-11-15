@@ -146,19 +146,28 @@ public class MyArrays {
 		int l = 0;
 		int r = array.length - 1;
 		boolean res = false;
+		int lEqualPos = 0;
+		int rEqualPos = r;
+		
 		if (r > l) {
 			while (l < r && array[l] <= array[l+1]) {
+				if (array[l] < array[l+1]) { 
+					lEqualPos = l + 1;
+				}
 				l++;
 			}
 			while (r > l && array[r-1] <= array[r]) {
+				if (array[r-1] < array[r]) {
+					rEqualPos = r - 1;
+				}
 				r--;
 			}
 			if (r > l) {
-				int rSave = r;
-				int lSave = l;
+				r = rEqualPos;
+				l = lEqualPos;
 				if (r + 1 < array.length) r++;
 				if (l > 0) l--;
-				while (l < r && (getFromSwappedArray(array,rSave,lSave,l)  <= getFromSwappedArray(array,rSave,lSave,l+1))) {
+				while (l < r && (getFromSwappedArray(array,rEqualPos,lEqualPos,l)  <= getFromSwappedArray(array,rEqualPos,lEqualPos,l+1))) {
 					l++;
 				}
 				res = r == l;
@@ -190,5 +199,27 @@ public class MyArrays {
 			}
 			i++;
 		}
+	}
+	
+	/**
+	 * 
+	 * @param array of short positive numbers
+	 * @param sum - positive number
+	 * @return true if array contains two numbers, sum of which equals a given sum
+	 */
+	static public boolean isSum2(short array[], int sum) {
+		boolean[] sums = new boolean[2 * 0xFFFF];
+		boolean res = false;
+		int oposit;
+		int i = 0;
+		while (i < array.length && !res) {
+			oposit = sum - array[i];
+			if (oposit > 0) {
+				res = sums[oposit];
+				sums[array[i]] = true;
+			}
+			i++;
+		}
+		return res;
 	}
 }
