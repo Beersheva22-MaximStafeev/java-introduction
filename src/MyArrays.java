@@ -208,13 +208,13 @@ public class MyArrays {
 	 * @return true if array contains two numbers, sum of which equals a given sum
 	 */
 	static public boolean isSum2(short array[], int sum) {
-		boolean[] sums = new boolean[2 * 0xFFFF];
+		boolean[] sums = new boolean[sum];
 		boolean res = false;
 		int oposit;
 		int i = 0;
 		while (i < array.length && !res) {
 			oposit = sum - array[i];
-			if (oposit > 0) {
+			if (oposit > 0 && oposit < sum) {
 				res = sums[oposit];
 				sums[array[i]] = true;
 			}
