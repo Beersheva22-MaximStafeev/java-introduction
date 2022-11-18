@@ -16,6 +16,7 @@ public class Strings {
 		.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
 		.equals(str2.chars().boxed()
 		.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+		str1.cha
 	}
 	
 	public static boolean isAnagram(String str, String anagram) {
