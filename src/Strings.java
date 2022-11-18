@@ -1,34 +1,27 @@
-import java.util.Arrays;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Strings {
-	public static boolean isAnagram1(String str, String anagram) {
-		char[] strChars = str.toCharArray();
-		char[] anagramChars = anagram.toCharArray();
-		Arrays.sort(strChars);
-		Arrays.sort(anagramChars);
-		return Arrays.equals(strChars, anagramChars);
-	}
 	
-	public static boolean isAnagram2(String str1, String str2) {
-		return str1.chars().boxed()
-		.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-		.equals(str2.chars().boxed()
-		.collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
-		str1.cha
-	}
-	
-	public static boolean isAnagram(String str, String anagram) {
-		char[] strChars = str.toCharArray();
-		char[] anagramChars = anagram.toCharArray();
+	/**
+	 * 
+	 * @param str1
+	 * @param str2
+	 * @return true if str2 is an anagram of str1
+	 * complexity O[N] two passes
+	 * only one additional array
+	 * only symbols or English letters
+	 * 1. the same length
+	 * 2. the same symbols just in different order
+	 */
+	public static boolean isAnagram(String str, String str2) {
+		char[] str1Chars = str.toCharArray();
+		char[] str2Chars = str2.toCharArray();
 		int[] countChars = new int[Short.MAX_VALUE+1];
 		boolean res = true;
-		for (int i = 0; i < strChars.length; i++) {
-			countChars[(int)strChars[i]]++;
+		for (int i = 0; i < str1Chars.length; i++) {
+			countChars[(short)str1Chars[i]]++;
 		}
-		for (int i = 0; i < anagramChars.length; i++) {
-			countChars[(int)anagramChars[i]]--;
+		for (int i = 0; i < str2Chars.length; i++) {
+			countChars[(short)str2Chars[i]]--;
 		}
 		int i = 0;
 		while (res && i < countChars.length) {
