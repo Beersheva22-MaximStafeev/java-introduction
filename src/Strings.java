@@ -16,16 +16,16 @@ public class Strings {
 		char[] str1Chars = str.toCharArray();
 		char[] str2Chars = str2.toCharArray();
 		int[] countChars = new int[Short.MAX_VALUE+1];
-		boolean res = true;
-		for (int i = 0; i < str1Chars.length; i++) {
-			countChars[(short)str1Chars[i]]++;
-		}
-		for (int i = 0; i < str2Chars.length; i++) {
-			countChars[(short)str2Chars[i]]--;
+		boolean res = str1Chars.length == str2Chars.length;
+		if (res) {
+			for (int i = 0; i < str1Chars.length; i++) {
+				countChars[(short)str1Chars[i]]++;
+			}
 		}
 		int i = 0;
-		while (res && i < countChars.length) {
-			res = countChars[i] == 0;
+		while (i < str2Chars.length && res) {
+			countChars[(short)str2Chars[i]]--;
+			res = countChars[(short)str2Chars[i]] >= 0;
 			i++;
 		}
 		return res;
