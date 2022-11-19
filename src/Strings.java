@@ -39,9 +39,10 @@ public class Strings {
 		int cur = 0;
 		Integer i = (int) Byte.MIN_VALUE;
 		while (i <= Byte.MAX_VALUE && cur < array.length) {
-			while (sorted[getByteIndex(i)] > 0) {
+			int charIndex = getByteIndex(i);
+			while (sorted[charIndex] > 0) {
 				array[cur] = i.toString();
-				sorted[getByteIndex(i)]--;
+				sorted[charIndex]--;
 				cur++;
 			}
 			i++;
