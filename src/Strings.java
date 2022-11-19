@@ -30,4 +30,25 @@ public class Strings {
 		}
 		return res;
 	}
+	
+	public static void sortStringNumbers(String[] array) {
+		byte[] sorted = new byte[getByteIndex(Byte.MAX_VALUE)+1];
+		for (int i = 0; i < array.length; i++) {
+			sorted[getByteIndex(Byte.parseByte(array[i]))]++;
+		}
+		int cur = 0;
+		Integer i = (int) Byte.MIN_VALUE;
+		while (i <= Byte.MAX_VALUE && cur < array.length) {
+			while (sorted[getByteIndex(i)] > 0) {
+				array[cur] = i.toString();
+				sorted[getByteIndex(i)]--;
+				cur++;
+			}
+			i++;
+		}
+	}
+	
+	private static int getByteIndex(int i) {
+		return -Byte.MIN_VALUE + i;
+	}
 }
