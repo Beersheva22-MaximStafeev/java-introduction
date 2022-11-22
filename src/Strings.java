@@ -52,4 +52,32 @@ public class Strings {
 	private static int getByteIndex(int i) {
 		return -Byte.MIN_VALUE + i;
 	}
+	
+	/**
+	 * 
+	 * @return RegExp, matches to a correct javaName
+	 */
+	public static String javaNameExp() {
+		// start with letter, $, _
+		// but if starts with _, should be another symbol
+		return "[a-zA-Z$][\\w$]*|_[\\w$]+";
+	}
+	
+	/**
+	 * 
+	 * @return RegExp for 0-255
+	 */
+	public static String ipV4Octet() {
+		//1-255 without leading zeroes
+		return "\\d|[1-9]\\d|1\\d\\d|2[0-4]\\d|25[0-5]";
+	}
+	
+	/**
+	 * 
+	 * @return RegExp for ip address v4
+	 */
+	public static String ipV4() {
+		String octet = ipV4Octet();
+		return "(" + octet + ")\\.(" + octet + ")\\.(" + octet + ")\\.(" + octet + ")" ;
+	}
 }
