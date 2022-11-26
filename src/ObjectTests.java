@@ -37,36 +37,4 @@ class ObjectTests {
 		assertEquals('v', b);
 	}
 	
-
-	@Test
-	void isAnagramTest() {
-		assertTrue(Strings.isAnagram("qwe", "ewq"));
-		assertFalse(Strings.isAnagram("qwe", "ewq1"));
-		assertTrue(Strings.isAnagram("papa", "apap"));
-		assertFalse(Strings.isAnagram("papa", "apafp"));
-		assertTrue(Strings.isAnagram("pap a", "ap ap"));
-		assertFalse(Strings.isAnagram("p apa", "ap  afp"));
-	}
-	
-	@Test
-	void sortStringNumbersTest() {
-		String[][][] tests = {
-				{
-					{"12","13","10"},
-					{"10","12","13"}
-				},
-				{
-					{"1","4","3"},
-					{"1","3","4"}
-				},
-				{
-					{"6","5","4"},
-					{"4","5","6"}
-				}
-		};
-		for (int i = 0; i < tests.length; i++) {
-			Strings.sortStringNumbers(tests[i][0]);
-			assertArrayEquals(tests[i][0], tests[i][1]);
-		}
-	}
 }
