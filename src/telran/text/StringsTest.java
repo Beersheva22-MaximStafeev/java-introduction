@@ -147,6 +147,8 @@ class StringsTest {
 		assertTrue(Double.isNaN(computeArithmenticExpression("2 # 2 ++ 10", null, null)));
 		assertTrue(Double.isNaN(computeArithmenticExpression("a + 2 + c * 2 + d23", new double[] {2, 1},
 				new String[] {"a", "c"})));
+		assertTrue(Double.isNaN(computeArithmenticExpression("a + 2 + c * 2 + d2s3", new double[] {2, 1},
+				new String[] {"a", "c"})));
 	}
 
 	@Test
