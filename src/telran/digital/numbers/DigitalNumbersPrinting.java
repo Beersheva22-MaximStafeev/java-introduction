@@ -9,6 +9,7 @@ public class DigitalNumbersPrinting {
 	public static void displayDigitalNumber(int number, int offcet, int width, int height) {
 		if (width > 0 && height > 0) {
 			String[][] allDigits;
+			// cache all digits first 
 			if (DIGITAL) {
 				allDigits = getAllDigitsDigital(width, height);
 			} else {
@@ -16,6 +17,7 @@ public class DigitalNumbersPrinting {
 			}
 			String[] interval = getEmptyDigit(INTERVAL, height);
 			String[] res = getEmptyDigit(0, height);
+			// probably better to use Numbers.getDigits for better understanding code, but Numbers in another branch
 			do {
 				res = digitalPrintingConcat(digitalPrintingConcat(allDigits[number % 10], interval), res);
 				number /= 10;
