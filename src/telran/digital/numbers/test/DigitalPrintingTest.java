@@ -32,6 +32,7 @@ public class DigitalPrintingTest {
 	@Test
 	void printNumber() {
 		displayDigitalNumber(1234567890, 10, 4, 7);
+		displayDigitalNumber(0, 10, 4, 7);
 	}
 
 }
