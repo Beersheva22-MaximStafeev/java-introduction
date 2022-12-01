@@ -34,5 +34,16 @@ public class DigitalPrintingTest {
 		displayDigitalNumber(1234567890, 10, 4, 7);
 		displayDigitalNumber(0, 10, 4, 7);
 	}
+	
+	@Test
+	@Disabled
+	void testBoolean() {
+		int b = 2;
+		switch (b) {
+			case 1: System.out.println("1");
+			case 2: System.out.println("2");
+			default: System.out.println("dd");
+		}
+	}
 
 }
